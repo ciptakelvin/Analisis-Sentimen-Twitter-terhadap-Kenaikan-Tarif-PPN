@@ -1,2 +1,2 @@
-# Analisis Sentimen Twitter
-Projek ini dibuat untuk mempermudah analisis sentimen twitter
+# Idylisis : Analisis Sentimen Bahasa Indonesia
+Projek ini dibuat untuk mempermudah analisis sentimen menggunakan Bahasa Indonesia
