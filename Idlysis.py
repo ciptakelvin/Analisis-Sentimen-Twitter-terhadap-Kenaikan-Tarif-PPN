@@ -134,7 +134,7 @@ class Analyzer():
         for i in models_used:
             accuracies=[]
             for j in range(10):
-                X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.5)
+                X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
                 i.fit(X_train,y_train)
                 prediction=i.predict(X_test)
                 accuracies.append(accuracy_score(prediction,y_test))
