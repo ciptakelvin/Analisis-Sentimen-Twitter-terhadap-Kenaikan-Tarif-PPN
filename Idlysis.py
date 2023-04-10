@@ -2,6 +2,7 @@
 import re
 import pandas as pd
 import nltk
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 import csv
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
@@ -32,19 +33,35 @@ class Preprocessor():
         mencakup proses casefolding, filtering
         """
         self.text=text
+        self._transform_emoticon()
         self._casefolding()
         self._filtering()
         self._tokenize()
         self._standarize()
 #         self._stemming()
+        self._remove_stop_words()
 
     def get_text(self):
-        return self.text
+        return " ".join(self.text)
     
     def _casefolding(self):
         #Mengubah menjadi huruf kecil        
         self.text=self.text.lower()
-    
+        
+    def _transform_emoticon(self):
+        positive_emoji=["😊","🙂","😀","😃","😄","😁","😆","🤣","😂","😊","🥳","🥰","😍","🤩","😘","😚","😙","😋","🤗","🤭",]
+        neutral_emoji=["😅","🙃","😉","😇","😎","😗","☺","😛","😜","😝","🤑","🤫","🤔","😐","🤐","🤨","😶","😏","😬","🤥","😌","🤤","😷","🥴","😳","🥺","😮","😯","😲","😦","😧","👻","👽","👾","🤖"]
+        negative_emoji=["🤓","🧐","🥲","🤪","😑","😒","🙄","😪","😴","😔","🤒","🤕","🤢","🤮","🤧","🥵","🥶","😵","🤯","😕","😟","🙁","☹","😨","😰","😥","😢","😭","😱","😖","😣","😞","😓","😩","😫","🥱","😤","😡","😠","🤬","😈","👿","💀","☠","💩","🤡","👹","👺",]
+        
+        for i in positive_emoji:
+            self.text=self.text.replace(i," positivemoji ")
+        
+        for i in neutral_emoji:
+            self.text=self.text.replace(i," neutralmoji ")
+        
+        for i in negative_emoji:
+            self.text=self.text.replace(i," negativemoji ")
+                
     def _filtering(self):        
         #Url
         self.text=re.sub("https\S+","",self.text)
@@ -65,11 +82,13 @@ class Preprocessor():
         self.text=re.sub("\s+"," ",self.text)
         self.text=re.sub("^\s","",self.text)
         self.text=self.text
-    
+
+        
     def _tokenize(self):
         #Membagi kata
         self.text=self.text.split(" ")
-
+    
+   
     def _standarize(self):        
         #Mengubah menjadi kata baku
         j={}
@@ -83,7 +102,6 @@ class Preprocessor():
             if t in j:
                 self.text[k]=j[t]
         
-        self.text=" ".join(self.text)
     
     def _stemming(self):
         #Mengubah menjadi kata dasar
@@ -91,6 +109,23 @@ class Preprocessor():
         stemmer=factory.create_stemmer()
         
         self.text=stemmer.stem(" ".join(self.text))
+        self._tokenize()
+
+    def _remove_stop_words(self):
+        stop_words = set(stopwords.words('indonesian'))
+        add_stopwords=[]
+        for i in add_stopwords:
+            stop_words.append(i)
+        w=[]
+        for i in self.text:
+            if i in stop_words:
+                w.append("")
+            else:
+                w.append(i)
+                
+        self.text=w
+
+        
     
 class Analyzer():  
     def __init__(self):
@@ -152,3 +187,4 @@ class Analyzer():
         if is_save:
             dump(model,"models/"+model.__class__.__name__+" "+str(datetime.now()).replace(":","")+".joblib")
         return model
+    
