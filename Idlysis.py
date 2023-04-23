@@ -22,6 +22,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.ensemble import AdaBoostClassifier
 
 from IPython.display import clear_output
 
@@ -38,7 +39,7 @@ class Preprocessor():
         self._filtering()
         self._tokenize()
         self._standarize()
-#         self._stemming()
+        self._stemming()
         self._remove_stop_words()
 
     def get_text(self):
@@ -132,7 +133,7 @@ class Analyzer():
         """
         Membuat model dan melakukan prediksi
         """
-        pass
+        self.t_size=0.2 #test size
     
     def predict(self,training_data:pd.DataFrame,data_to_predict:pd.DataFrame):
         #Train and Predict Directly
@@ -162,6 +163,7 @@ class Analyzer():
             DecisionTreeClassifier(),
             RandomForestClassifier(),
             GradientBoostingClassifier(),
+            AdaBoostClassifier()
         ]
         
         
@@ -169,7 +171,7 @@ class Analyzer():
         for i in models_used:
             accuracies=[]
             for j in range(10):
-                X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2)
+                X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=self.t_size)
                 i.fit(X_train,y_train)
                 prediction=i.predict(X_test)
                 accuracies.append(accuracy_score(prediction,y_test))
@@ -183,6 +185,7 @@ class Analyzer():
             print("Average Accuracy Score:",accuracy,"\n")
 
         print("Training Data Size: ",data.shape[0])
+        print("Training Test Size: ",self.t_size*100,"%")
         print("Model used: "+model.__class__.__name__+" model. Accuracy: "+str(max_accuracy))
         if is_save:
             dump(model,"models/"+model.__class__.__name__+" "+str(datetime.now()).replace(":","")+".joblib")
