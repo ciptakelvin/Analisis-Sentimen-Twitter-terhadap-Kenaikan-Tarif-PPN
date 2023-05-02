@@ -9,7 +9,7 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn import datasets
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score,f1_score,recall_score,accuracy_score
 from joblib import dump, load
 from datetime import datetime
 import numpy as np
@@ -175,7 +175,7 @@ class Analyzer():
                 i.fit(X_train,y_train)
                 prediction=i.predict(X_test)
                 accuracies.append(accuracy_score(prediction,y_test))
-                print("Testing.. Accuracy Score: ",accuracy_score(prediction,y_test))
+                print("Testing.. Accuracy Score: ",accuracy_score(y_test,prediction))
             
             accuracy=np.average(accuracies)
             if accuracy>max_accuracy:

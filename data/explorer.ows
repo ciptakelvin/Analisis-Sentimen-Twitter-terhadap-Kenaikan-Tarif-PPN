@@ -12,6 +12,7 @@
 		<node id="8" name="Select Columns" qualified_name="Orange.widgets.data.owselectcolumns.OWSelectAttributes" project_name="Orange3" version="" title="Coordinates" position="(626.0, 64.0)" />
 		<node id="9" name="Impute" qualified_name="Orange.widgets.data.owimpute.OWImpute" project_name="Orange3" version="" title="Impute" position="(730.0, 65.0)" />
 		<node id="10" name="Geo Map" qualified_name="orangecontrib.geo.widgets.owmap.OWMap" project_name="Orange3-Geo" version="" title="Geo Map" position="(838.0, 57.0)" />
+		<node id="11" name="Distributions" qualified_name="Orange.widgets.visualize.owdistributions.OWDistributions" project_name="Orange3" version="" title="Distributions" position="(388.0, 442.0)" />
 	</nodes>
 	<links>
 		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" />
@@ -24,6 +25,7 @@
 		<link id="7" source_node_id="1" sink_node_id="8" source_channel="Selected Data" sink_channel="Data" enabled="true" />
 		<link id="8" source_node_id="8" sink_node_id="9" source_channel="Data" sink_channel="Data" enabled="true" />
 		<link id="9" source_node_id="9" sink_node_id="10" source_channel="Data" sink_channel="Data" enabled="true" />
+		<link id="10" source_node_id="1" sink_node_id="11" source_channel="Selected Data" sink_channel="Data" enabled="true" />
 	</links>
 	<annotations>
 		<text id="0" type="text/plain" rect="(719.0, 264.0, 150.0, 72.0)" font-family="MS Shell Dlg 2" font-size="16">Explore Sentiment Label</text>
@@ -1700,6 +1702,26 @@ aKFLA2iiSwNoo0sDdXViaBkpgZR9lChoHH2UKGiBaIJLZYaUaIROSv7///+GlGiGaIdLZoaUaIlo
 iktmhpRojE5K/v///4aUaI5OSv7///+GlGiQfZRoFEsDdWgufZQoaIdLAmiKSwJ1aDZ9lChomksD
 aJtLA2icSwNonUsDaJ5LA2ifSwNooEsDaKFLA2iiSwNoo0sDaJNLAWiUSwFolUsBaJZLAWiCSwFo
 l0sBaJhLAXV1YmV1Lg==
+</properties>
+		<properties node_id="11" format="pickle">gASVCAQAAAAAAAB9lCiMCmF1dG9fYXBwbHmUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMEGN1bXVs
+YXRpdmVfZGlzdHKUiYwTZml0dGVkX2Rpc3RyaWJ1dGlvbpRLAIwJaGlkZV9iYXJzlImMDWtkZV9z
+bW9vdGhpbmeUSwqME3NhdmVkV2lkZ2V0R2VvbWV0cnmUQ0IB2dDLAAMAAAAAAcAAAACoAAAFTgAA
+AqYAAAHBAAAAxgAABU0AAAKlAAAAAAAAAAAGAAAAAcEAAADGAAAFTQAAAqWUjApzaG93X3Byb2Jz
+lIiMDHNvcnRfYnlfZnJlcZSJjA9zdGFja2VkX2NvbHVtbnOUiYwLX192ZXJzaW9uX1+USwGMEGNv
+bnRleHRfc2V0dGluZ3OUXZSMFW9yYW5nZXdpZGdldC5zZXR0aW5nc5SMB0NvbnRleHSUk5QpgZR9
+lCiMBnZhbHVlc5R9lCiMBGN2YXKUTkr+////hpSMDm51bWJlcl9vZl9iaW5zlEsASv7///+GlIwJ
+c2VsZWN0aW9ulI+USv7///+GlIwDdmFylIwOU2VhcmNoIEtleXdvcmSUS2WGlGgMSwF1jAphdHRy
+aWJ1dGVzlH2UKIwCSWSUSwJoHksBjAhEYXRldGltZZRLBIwKVmlldyBDb3VudJRLAowLUmVwbHkg
+Q291bnSUSwKMDVJldHdlZXQgQ291bnSUSwKMCkxpa2UgQ291bnSUSwKMC1F1b3RlIENvdW50lEsC
+jAhMYW5ndWFnZZRLAYwWQ29vcmRpbmF0ZXMgKExhdGl0dWRlKZRLAowXQ29vcmRpbmF0ZXMgKExv
+bmdpdHVkZSmUSwKMFU1lbnRpb25lZCBVc2VycyBDb3VudJRLAowNVXNlciBWZXJpZmllZJRLAYwU
+VXNlciBGb2xsb3dlcnMgQ291bnSUSwKME1VzZXIgU3RhdHVzZXMgQ291bnSUSwKMBFllYXKUSwKM
+BU1vbnRolEsCjANEYXmUSwKMEEV4Y2xhbWF0aW9uIE1hcmuUSwKMDVF1ZXN0aW9uIE1hcmuUSwKM
+EFVwcGVyIFBlcmNlbnRhZ2WUSwKMDlBvc2l0aXZlIEVtb2pplEsCjA1OZXV0cmFsIEVtb2pplEsC
+jA5OZWdhdGl2ZSBFbW9qaZRLAowFTGFiZWyUSwGMDlRyYWluaW5nIExhYmVslEsCdYwFbWV0YXOU
+fZQojANVUkyUSwOMBVR3ZWV0lEsDjAhVc2VybmFtZZRLA4wGU291cmNllEsDjAVQbGFjZZRLA4wI
+SGFzaHRhZ3OUSwOMDVJlcGx5IHRvIFVzZXKUSwOMD01lbnRpb25lZCBVc2Vyc5RLA4wES290YZRL
+A4wFQ2xlYW6USwN1dWJhdS4=
 </properties>
 	</node_properties>
 	<session_state>
