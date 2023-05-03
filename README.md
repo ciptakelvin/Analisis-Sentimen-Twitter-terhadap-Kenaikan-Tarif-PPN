@@ -1,3 +1,2 @@
-# Idylisis : Analisis Sentimen Bahasa Indonesia
-Projek ini dibuat untuk mempermudah analisis sentimen menggunakan Bahasa Indonesia
-saat ini masih dalam pengembangan dan masih belum dapat digunakan
+# Analisis Sentimen Twitter terhadap Kenaikan Tarif PPN
+Projek ini merupakan data dan algoritma pemrograman karya tulis tugas akhir
